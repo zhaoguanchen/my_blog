@@ -1,3 +1,29 @@
+---
+title: AWS Route 53（域名）
+date:
+updated:
+tags: AWS
+categories: AWS
+keywords: domain
+description:
+top_img:
+comments: true
+cover:
+toc:
+toc_number:
+toc_style_simple:
+copyright:
+copyright_author:
+copyright_author_href:
+copyright_url:
+copyright_info:
+mathjax:
+katex:
+aplayer:
+highlight_shrink:
+aside:
+---
+
 # Domain
 
 ## TransferDomainToAnotherAwsAccount
