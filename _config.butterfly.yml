@@ -173,13 +173,13 @@ anchor: false
 # toc (目錄)
 toc:
   post: true
-  page: false
+  page: true
   number: true
   expand: false
   style_simple: false # for post
 
 post_copyright:
-  enable: true
+  enable: false
   decode: false
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
@@ -395,8 +395,8 @@ footer:
   owner:
     enable: true
     since: 2022
-  custom_text: move
-  copyright: true # Copyright of theme and framework
+  custom_text: email:gczhao@uw.edu
+  copyright: false # Copyright of theme and framework
 
 # Analysis
 # --------------------------------------
@@ -534,7 +534,7 @@ activate_power_mode:
 
 # Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
 fireworks:
-  enable: true
+  enable: false
   zIndex: 9999 # -1 or 9999
   mobile: false
 
