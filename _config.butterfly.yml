@@ -112,8 +112,8 @@ category_per_img:
 
 cover:
   # display the cover or not (是否顯示文章封面)
-  index_enable: true
-  aside_enable: true
+  index_enable: false
+  aside_enable: false
   archives_enable: true
   # the position of cover in home page (封面顯示的位置)
   # left/right/both
@@ -175,8 +175,8 @@ toc:
   post: true
   page: true
   number: true
-  expand: false
-  style_simple: false # for post
+  expand: true
+  style_simple: true # for post
 
 post_copyright:
   enable: false
@@ -403,7 +403,7 @@ footer:
 
 # Baidu Analytics
 # https://tongji.baidu.com/web/welcome/login
-baidu_analytics:
+baidu_analytics: 2724085f6b60701600c51b4ccf8c374e
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/

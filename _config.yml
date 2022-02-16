@@ -4,9 +4,9 @@
 
 # Site
 title: 赵冠晨
-subtitle: '我的！'
+subtitle: '个人网站'
 description: ''
-keywords:
+keywords: 
 author: 赵冠晨
 language: zh-CN
 timezone: ''
@@ -14,7 +14,7 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://zhaoguanchen.github.io
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
