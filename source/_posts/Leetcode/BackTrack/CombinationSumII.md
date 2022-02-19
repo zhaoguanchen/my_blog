@@ -1,5 +1,5 @@
 ---
-title: Combination Sum
+title: Combination Sum II
 date: 
 updated:
 tags: BackTrack
@@ -22,62 +22,57 @@ katex:
 aplayer:
 highlight_shrink:
 aside:
-
-
-
-
 ---
 
-# Combination Sum
+# Combination Sum II
 
-Num: 39. Combination Sum
+Num: 40. Combination Sum II
 
-Link: https://leetcode.com/problems/combination-sum/
+Link: https://leetcode.com/problems/combination-sum-ii/
 
 
 
 ## Desc
 
-Given an array of **distinct** integers `candidates` and a target integer `target`, return *a list of all **unique combinations** of* `candidates` *where the chosen numbers sum to* `target`*.* You may return the combinations in **any order**.
+Given a collection of candidate numbers (`candidates`) and a target number (`target`), find all unique combinations in `candidates` where the candidate numbers sum to `target`.
 
-The **same** number may be chosen from `candidates` an **unlimited number of times**. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+Each number in `candidates` may only be used **once** in the combination.
 
-It is **guaranteed** that the number of unique combinations that sum up to `target` is less than `150` combinations for the given input.
+**Note:** The solution set must not contain duplicate combinations.
 
  
 
 **Example 1:**
 
 ```
-Input: candidates = [2,3,6,7], target = 7
-Output: [[2,2,3],[7]]
-Explanation:
-2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
-7 is a candidate, and 7 = 7.
-These are the only two combinations.
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
 ```
 
 **Example 2:**
 
 ```
-Input: candidates = [2,3,5], target = 8
-Output: [[2,2,2,2],[2,3,3],[3,5]]
+Input: candidates = [2,5,2,1,2], target = 5
+Output: 
+[
+[1,2,2],
+[5]
+]
 ```
 
-**Example 3:**
-
-```
-Input: candidates = [2], target = 1
-Output: []
-```
-
-
+ 
 
 ## Solution
 
 ### 1. Backtrack
 
-思路：
+##### 思路：
 
 ```
 def backtrack(...):
@@ -86,6 +81,19 @@ def backtrack(...):
         backtrack(...)
         撤销选择
 ```
+
+
+
+##### 跟1有什么不同？
+
+- 给出的候选列表包含重复数字
+
+需要考虑如何排除重复
+
+##### 如何去重？
+
+- 递归时从下一位开始（这样子序列不会包含本节点）
+- 排序后，相同数字会相邻。for循环遇到相同数字时，直接跳过（因为该数字已经递归过了，没有必要再跑一遍）
 
 
 
@@ -102,6 +110,8 @@ class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         targetValue = target;
         candidateValue = candidates;
+        // 排序
+        Arrays.sort(candidateValue);
         backtrack(new ArrayList<>(), 0, 0);
 
         return result;
@@ -121,11 +131,16 @@ class Solution {
 
         for (int i = start; i < candidateValue.length; i++) {
             int currentValue = candidateValue[i];
+            // 去重判断
+            if (i > start && currentValue == candidateValue[i - 1]) {
+                continue;
+            }
+
             // 选择
             path.add(currentValue);
             sum += currentValue;
             // 回溯，仅需要考虑当前位及以后位，若考虑之前位会造成重复。
-            backtrack(path, sum, i);
+            backtrack(path, sum, i + 1);
             // 撤销选择
             path.remove(path.size() - 1);
             sum -= currentValue;
