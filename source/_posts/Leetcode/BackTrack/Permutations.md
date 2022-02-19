@@ -95,18 +95,18 @@ class Solution {
 
     public List<List<Integer>> permute(int[] nums) {
         candidateValue = nums;
-        backtrack(new ArrayList<>(), 0);
+        backtrack(new ArrayList<>());
         return result;
     }
 
-    private void backtrack(List<Integer> path, int start) {
+    private void backtrack(List<Integer> path) {
         // 结束条件：长度相等
         if (path.size() == candidateValue.length) {
             result.add(new ArrayList<>(path));
             return;
         }
         
-        for (int i = start; i < candidateValue.length; i++) {
+        for (int i = 0; i < candidateValue.length; i++) {
             int currentValue = candidateValue[i];
             // 排除已存在的元素
             if (path.contains(currentValue)) {
@@ -116,7 +116,7 @@ class Solution {
             // 选择
             path.add(currentValue);
             // 回溯，考虑所有候选项
-            backtrack(path, 0);
+            backtrack(path);
             // 撤销选择
             path.remove(path.size() - 1);
         }
