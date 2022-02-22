@@ -113,4 +113,4 @@ class Solution {
 
 ## Reference
 
-[BFS 算法解题套路框架] https://labuladong.gitee.io/algo/1/6/
+[二分搜索][https://labuladong.github.io/algo/1/10/]
