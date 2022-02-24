@@ -3,7 +3,9 @@ title: Minimum Falling Path Sum
 date: 
 updated:
 tags: DP
-categories: Leetcode | DP
+categories: 
+  - Leetcode
+  - DP
 keywords: DP | Path
 description:
 top_img:

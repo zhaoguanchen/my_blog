@@ -3,7 +3,9 @@ title: Longest Increasing Subsequence
 date: 
 updated:
 tags: DP
-categories: Leetcode | DP
+categories: 
+  - Leetcode
+  - DP
 keywords: DP Subsequence
 description:
 top_img:

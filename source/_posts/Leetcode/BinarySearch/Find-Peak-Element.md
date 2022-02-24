@@ -3,7 +3,9 @@ title: Find Peak Element
 date: 
 updated:
 tags: Binary Search
-categories: Leetcode/Binary Search
+categories: 
+	- Leetcode
+	- Binary Search
 keywords: Binary Search
 description:
 top_img:

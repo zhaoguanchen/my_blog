@@ -2,8 +2,10 @@
 title: Search in Rotated Sorted Array
 date: 
 updated:
-tags: Binary Search
-categories: Leetcode/Binary Search
+tags: [Binary Search]
+categories: 
+	- Leetcode
+	- Binary Search
 keywords: Binary Search
 description:
 top_img:
@@ -22,14 +24,6 @@ katex:
 aplayer:
 highlight_shrink:
 aside:
-
-
-
-
-
-
-
-
 ---
 
 # Search in Rotated Sorted Array
