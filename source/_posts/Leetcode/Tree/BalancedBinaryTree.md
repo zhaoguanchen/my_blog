@@ -3,8 +3,10 @@ title: Balanced Binary Tree
 date: 
 updated:
 tags: Tree
-categories: Leetcode
-keywords: domain
+categories: 
+  - Leetcode
+  - Tree
+keywords: Tree
 description:
 top_img:
 comments: true
