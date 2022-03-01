@@ -1,5 +1,5 @@
 ---
-title: Reverse Linked List
+title: Reverse Linked List and II
 date: 
 updated:
 tags: Linked List
@@ -26,11 +26,13 @@ highlight_shrink:
 aside:
 ---
 
-# Reverse Linked List
+本文涉及反转链表，反转链表前n个节点以及反转链表部分节点。
+
+# 1. Reverse Linked List
 
 Num:  206. Reverse Linked List
 
-Link: https://leetcode.com/problems/intersection-of-two-linked-lists/
+Link: https://leetcode.com/problems/reverse-linked-list/
 
 
 
@@ -96,7 +98,7 @@ class Solution {
         }
 
         // 递归反转，最终返回末尾元素
-        ListNode last = reverseList1(head.next);
+        ListNode last = reverseList(head.next);
 
         // head原来指向第二个节点，现在第二个节点指向head
         head.next.next = head;
@@ -154,7 +156,166 @@ class Solution {
 
    
 
+# 2. Reverse Linked List II
 
+Num:  92. Reverse Linked List II
+
+Link: https://leetcode.com/problems/reverse-linked-list-ii/
+
+
+
+## Desc
+
+
+
+- Given the `head` of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return *the reversed list*.
+
+   
+
+  **Example 1:**
+
+  ![img](https://assets.leetcode.com/uploads/2021/02/19/rev2ex2.jpg)
+
+  ```
+  Input: head = [1,2,3,4,5], left = 2, right = 4
+  Output: [1,4,3,2,5]
+  ```
+
+  **Example 2:**
+
+  ```
+  Input: head = [5], left = 1, right = 1
+  Output: [5]
+  ```
+
+   
+
+  **Constraints:**
+
+  - The number of nodes in the list is `n`.
+  - `1 <= n <= 500`
+  - `-500 <= Node.val <= 500`
+  - `1 <= left <= right <= n`
+
+   
+
+  **Follow up:** Could you do it in one pass?
+
+## Solution
+
+### 1. 递归
+
+##### 思路
+
+-  将问题转化为反转前n个节点
+
+
+
+##### 解法 
+
+```java
+class Solution {
+
+    /**
+     * 反转后链表的下一个节点
+     */
+    private ListNode nextNode;
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if (head == null) {
+            return head;
+        }
+
+        // 到达起点，题目转换为反转链表前n个节点
+        if (left == 1) {
+            return reverseTopN(head, right);
+        }
+        // 前进到要反转的区间
+        head.next = reverseBetween(head.next, left - 1, right - 1);
+
+        return head;
+    }
+
+
+    /**
+     * reverse top n
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    private ListNode reverseTopN(ListNode head, int n) {
+        if (n == 1) {
+            nextNode = head.next;
+            return head;
+        }
+
+        ListNode last = reverseTopN(head.next, n - 1);
+
+        head.next.next = head;
+        head.next = nextNode;
+
+        return last;
+    }
+}
+```
+
+   
+
+### 2. 迭代
+
+
+
+##### 思路
+
+-  从前往后，建立节点引用，改变指针指向
+-  second节点不是指向前一节点（first），而是指向区间的前一节点。相当于该节点与前面的字串进行反转。
+
+
+
+##### 解法 
+
+```java
+class Solution {
+
+
+    public static ListNode reverseBetween(ListNode head, int left, int right) {
+        if (head == null) {
+            return head;
+        }
+
+        ListNode vHead = new ListNode(-1); // create a dummy node to mark the head of this list
+        vHead.next = head;
+        ListNode pre = vHead;
+
+        // 前进到区间前一节点
+        for (int i = 1; i < left; i++) {
+            pre = pre.next;
+        }
+
+        ListNode first = pre.next;
+        ListNode second = pre.next.next;
+
+        int bar = right - left;
+        for (int i = 0; i < bar; i++) {
+            // 与字串反转
+            first.next = second.next;
+            second.next = pre.next;
+            pre.next = second;
+            second = first.next;
+            ListNode.print(vHead);
+        }
+
+
+        return vHead.next;
+    }
+
+
+
+}
+```
+
+   
 
    
 
