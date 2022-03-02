@@ -2,9 +2,17 @@
 title: Maximum Depth of Binary Tree
 date: 
 updated:
-tags: BFS, DFS
-categories: Leetcode/BFS
-keywords: BFS, DFS
+tags: 
+  - BFS
+  - DFS
+  - Binary Tree
+categories: 
+  - Leetcode
+  - BFS
+keywords: 
+  - BFS
+  - DFS
+  - Binary Tree
 description:
 top_img:
 comments: true
