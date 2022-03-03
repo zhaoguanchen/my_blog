@@ -512,5 +512,5 @@ class Solution {
 
 ## Reference
 
-[手把手刷二叉树第一期](https://labuladong.github.io/algo/2/18/22/)
+[手把手刷二叉树第二期](https://labuladong.github.io/algo/2/18/23/)
 
