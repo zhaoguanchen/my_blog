@@ -232,7 +232,7 @@ public class QuickSort {
 
 
 
-## 2. 快速选择算法
+## 2. 快速选择
 
 在计算机科学中，快速选择算法主要是用于在未排序的数组中找到第 k 个最小/大数字的算法。它的方法和快速排序算法类似，快速排序算法和快速选择选择算法都是由 Tony Hoare 发明。
 
@@ -369,3 +369,89 @@ public class KthLargestElementArray {
 
 
  
+
+
+
+## 3. 归并排序
+
+归并排序的核心思想是将数组分为左右两部分，递归进行合并。
+
+其结构与二叉树的后续遍历类似，即先处理左右子节点，再根据左右子节点的结果处理当前节点。归并的过程就是合并左右两个有序数组的过程。
+
+
+
+```java
+public class MergeSort {
+
+    /**
+     * 将数组转为全局变量，避免传参
+     */
+    private int[] arr;
+
+    /**
+     * 临时数组
+     */
+    private int[] temp;
+
+    private void sort(int[] array) {
+        arr = array;
+        temp = new int[arr.length];
+        mergeSort(0, array.length - 1);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    private void mergeSort(int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        // 切记：采用移位运算符的话，要用括号括住
+        int mid = left + ((right - left) >> 1);
+
+        mergeSort(left, mid);
+        mergeSort(mid + 1, right);
+        merge(left, mid, right);
+    }
+
+    /**
+     * 合并
+     *
+     * @param left
+     * @param mid
+     * @param right
+     */
+    private void merge(int left, int mid, int right) {
+        // 左半边和右半边指针
+        int p = left;
+        int q = mid + 1;
+        // 将数组缓存到临时数组
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[i];
+        }
+
+        for (int cur = left; cur <= right; cur++) {
+            if (p > mid) {
+                arr[cur] = temp[q];
+                q++;
+            } else if (q > right) {
+                arr[cur] = temp[p];
+                p++;
+            } else if (temp[p] > temp[q]) {
+                arr[cur] = temp[q];
+                q++;
+            } else {
+                arr[cur] = temp[p];
+                p++;
+            }
+            
+        }
+
+    }
+
+
+}
+
+```
+
+
+
