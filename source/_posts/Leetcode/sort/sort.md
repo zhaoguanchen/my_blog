@@ -28,6 +28,10 @@ aside:
 
 # 常见排序算法
 
+测试这些算法的正确性，可以用 [Leetcode 912. Sort an Array](https://leetcode.com/problems/sort-an-array/). 也可以在[GeeksforGeeks](https://www.geeksforgeeks.org/)中找到对应题型进行提交。
+
+
+
 ## 1. 快速排序
 
 快速排序的核心是找到分割点 -- pivot，使得左边的元素都小于pivot所在的元素，右边的元素都大于pivot所在的元素。
