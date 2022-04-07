@@ -323,6 +323,98 @@ class Solution {
 
 至此，`3Sum` 问题就解决了，时间复杂度不难算，排序的复杂度为 `O(NlogN)`，`twoSumTarget` 函数中的双指针操作为 `O(N)`，`threeSumTarget` 函数在 for 循环中调用 `twoSumTarget` 所以总的时间复杂度就是 `O(NlogN + N^2) = O(N^2)`。
 
+# 2. 三数之和（3Sum Closest）
+
+有了三数之和，我们再来看它的小变种。
+
+LeetCode第16题为[3 Sum Closest][https://leetcode.com/problems/3sum-closest/]. 求数组中和离目标值最近的三个数的组合，简单之处在于题目指定仅有一个答案。
+
+## 题目描述
+
+Given an integer array `nums` of length `n` and an integer `target`, find three integers in `nums` such that the sum is closest to `target`.
+
+Return *the sum of the three integers*.
+
+You may assume that each input would have exactly one solution.
+
+ 
+
+**Example 1:**
+
+```
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+```
+
+**Example 2:**
+
+```
+Input: nums = [0,0,0], target = 1
+Output: 0
+```
+
+  
+
+## 解法
+
+### 1. 排序后双指针
+
+我们对上面三数之和的解法进行略微改进，即可得到本题的答案。
+
+整体框架不变，依然是采用外层循环，内层双指针的方法。区别在于我们定义了一个变量`closest`来存储最小值，定义了变量`minDiff`来存储最小的绝对差值。这样，我们只需要在每次判断sum与target的绝对差是否更小就可以了。
+
+如果sum恰好等于target，则可以直接返回sum，因为没有更小的差值了。
+
+```java
+    public int threeSumClosest(int[] nums, int target) {
+        int closest = 0;
+        int minDiff = Integer.MAX_VALUE;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (0 != i && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int left = i + 1;
+            int right = nums.length - 1;
+
+            while (left < right) {
+                int leftVal = nums[left];
+                int rightVal = nums[right];
+                int sum = nums[i] + leftVal + rightVal;
+                int diff = Math.abs(sum - target);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closest = sum;
+                }
+
+
+                if (sum < target) {
+                    while (left < right && nums[left] == leftVal) {
+                        left++;
+                    }
+                } else if (sum > target) {
+                    while (left < right && nums[right] == rightVal) {
+                        right--;
+                    }
+                } else {
+                    return target;
+                }
+            }
+
+        }
+
+        return closest;
+    }
+
+
+```
+
+**关键点在于，不能让第一个数重复，至于后面的两个数，我们复用的 `twoSum` 函数会保证它们不重复**。所以代码中需要用一个判断来保证 `3Sum` 中第一个元素不重复。
+
+至此，`3Sum` 问题就解决了，时间复杂度不难算，排序的复杂度为 `O(NlogN)`，`twoSumTarget` 函数中的双指针操作为 `O(N)`，`threeSumTarget` 函数在 for 循环中调用 `twoSumTarget` 所以总的时间复杂度就是 `O(NlogN + N^2) = O(N^2)`。
+
 
 
 # 3. 四数之和（4Sum）
