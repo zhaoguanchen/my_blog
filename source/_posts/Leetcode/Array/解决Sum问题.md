@@ -32,7 +32,7 @@ aside:
 
 # 1. 两数之和（Two Sum)
 
-LeetCode第一题即为[Two Sum][https://leetcode.com/problems/two-sum/]. 求数组中和为目标值的两个数的索引下标。
+LeetCode第一题即为[Two Sum](https://leetcode.com/problems/two-sum/). 求数组中和为目标值的两个数的索引下标。
 
 ## 题目描述
 
@@ -180,7 +180,7 @@ class Solution {
 
 # 2. 三数之和（3Sum）
 
-LeetCode第15题即为[3 Sum][https://leetcode.com/problems/3sum/]. 求数组中和为0的三个数的组合，同时三数之间互不相等，返回的组合也不能重复。
+LeetCode第15题即为[3 Sum](https://leetcode.com/problems/3sum/). 求数组中和为0的三个数的组合，同时三数之间互不相等，返回的组合也不能重复。
 
 ## 题目描述
 
@@ -327,7 +327,7 @@ class Solution {
 
 有了三数之和，我们再来看它的小变种。
 
-LeetCode第16题为[3 Sum Closest][https://leetcode.com/problems/3sum-closest/]. 求数组中和离目标值最近的三个数的组合，简单之处在于题目指定仅有一个答案。
+LeetCode第16题为[3 Sum Closest](https://leetcode.com/problems/3sum-closest/). 求数组中和离目标值最近的三个数的组合，简单之处在于题目指定仅有一个答案。
 
 ## 题目描述
 
@@ -419,7 +419,7 @@ Output: 0
 
 # 3. 四数之和（4Sum）
 
-LeetCode第18题即为[4 Sum][https://leetcode.com/problems/4sum/]. 求数组中和为target的四个数的组合，同时返回的组合也不能重复。
+LeetCode第18题即为[4 Sum](https://leetcode.com/problems/4sum/). 求数组中和为target的四个数的组合，同时返回的组合也不能重复。
 
 ## 题目描述
 
