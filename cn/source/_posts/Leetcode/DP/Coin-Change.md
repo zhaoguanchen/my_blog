@@ -3,10 +3,12 @@ title: Coin Change
 date: 
 updated:
 tags: DP
-categories: Leetcode DP
 categories: 
-	- Leetcode
-	- DP
+  - Leetcode 
+  - DP
+categories: 
+  - Leetcode
+  - DP
 keywords: DP
 description:
 top_img:
