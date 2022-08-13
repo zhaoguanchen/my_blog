@@ -30,6 +30,42 @@ aside:
 
 ## 1. Level Order Traversal
 
+Use BFS method.
+
+```java
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        
+        List<List<Integer>> ans = new ArrayList<>();
+       
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
+                list.add(cur.val);
+                if (cur.left != null) {
+                    queue.add(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.add(cur.right);
+                }
+            }
+            
+            ans.add(list);  
+        }
+        
+        return ans;       
+    }
+}
+```
+
 
 
 
@@ -212,3 +248,45 @@ class Solution {
 
 
 ## 5. Vertical Order Traversal
+
+Use BFS method. Store Pair of node and column.
+
+```java
+class Solution {
+    
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Queue<Pair<TreeNode, Integer>> queue = new LinkedList<>();
+        queue.add(new Pair<>(root, 0));
+
+        while (!queue.isEmpty()) {
+            Pair<TreeNode, Integer> pair = queue.poll();
+            TreeNode node = pair.getKey();
+            if (node == null) {
+                continue;
+            }
+            int col = pair.getValue();
+            if (!map.containsKey(col)) {
+                map.put(col, new ArrayList<>());
+            }
+
+            map.get(col).add(node.val);
+            queue.add(new Pair<>(node.left, col - 1));
+            queue.add(new Pair<>(node.right, col + 1));
+
+        }
+        // sort by key
+        List<Integer> list = new ArrayList<>(map.keySet());
+        Collections.sort(list);
+        // generate result
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int i : list) {
+            ans.add(map.get(i));
+        }
+
+        return ans;
+    }
+   
+}
+```
+
